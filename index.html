@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dear DIYA Woman - Motivation</title>
+  <!-- Google Fonts for a modern look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #f5f5f5;
+      color: #333;
+      transition: background 0.8s ease-in-out;
+    }
+    .container {
+      position: relative;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(5px);
+    }
+    .quote {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      background-color: #007BFF;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover { background-color: #0056b3; }
+    .bg-image {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      transition: opacity 1s;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background image element -->
+  <div class="bg-image" id="bgImage"></div>
+  <div class="container">
+    <div class="card">
+      <div class="quote" id="quote">Loading motivation...</div>
+      <button onclick="generateQuote()">Refresh Motivation</button>
+    </div>
+  </div>
+  <script>
+    const quotes = [
+      { text: "Dear DIYA Woman, you didn’t come this far to stop now. Your goals are still valid. Your dreams still matter. Keep showing up even when no one’s clapping yet.", image: "https://source.unsplash.com/500x700/?woman,empowerment&sig=1" },
+      { text: "Some days will test you. Things might not go as planned. Breathe, regroup, and remember: you’ve overcome so much already.", image: "https://source.unsplash.com/500x700/?woman,struggle&sig=2" },
+      { text: "Repeat after me: I am capable. I am worthy. I am becoming. Speak life over yourself; your words carry power.", image: "https://source.unsplash.com/500x700/?woman,confidence&sig=3" },
+      { text: "Comparison steals joy. Your journey is yours alone. Celebrate wins without questioning yours. There’s room for all to shine.", image: "https://source.unsplash.com/500x700/?woman,celebration&sig=4" },
+      { text: "Dear DIYA Woman, it’s okay to rest. Hustling non-stop doesn’t prove anything. Protect your peace and recharge.", image: "https://source.unsplash.com/500x700/?woman,rest&sig=5" },
+      { text: "Shatter those ceilings, sis. Walk into every room like you belong because you do. Don’t dim your light.", image: "https://source.unsplash.com/500x700/?woman,leadership&sig=6" },
+      { text: "That idea you’ve been sitting on? Start. That application you’re hesitating on? Submit it. Speak up and go after it.", image: "https://source.unsplash.com/500x700/?woman,ambition&sig=7" },
+      { text: "Celebrate the silent wins: getting out of bed when you didn’t want to, sending that email, choosing yourself. Small steps matter.", image: "https://source.unsplash.com/500x700/?woman,joy&sig=8" },
+      { text: "Dear DIYA Woman, surround yourself with those who remind you of your power. Find your tribe that pushes you to dream bigger.", image: "https://source.unsplash.com/500x700/?woman,community&sig=9" },
+      { text: "Your future self is watching, grateful you didn’t give up. Keep believing, keep blooming, keep securing the bag. You are magic.", image: "https://source.unsplash.com/500x700/?woman,dream&sig=10" },
+      { text: "Growth isn’t always loud. Sometimes it’s choosing peace over proving a point. Choose what serves your future.", image: "https://source.unsplash.com/500x700/?woman,growth&sig=11" },
+      { text: "You are not behind; you are on your own timeline. What’s meant for you won’t miss you—keep moving forward.", image: "https://source.unsplash.com/500x700/?woman,timeline&sig=12" },
+      { text: "Sis, you are allowed to outgrow people, places, and mindsets that don’t align with who you’re becoming. Elevate unapologetically.", image: "https://source.unsplash.com/500x700/?woman,evolution&sig=13" },
+      { text: "Let today be the day you choose courage over comfort. Big dreams require bold moves. Bet on yourself.", image: "https://source.unsplash.com/500x700/?woman,courage&sig=14" },
+      { text: "Every 'no' brings you closer to the right 'yes.' Don’t let rejection hold you back. You’re being redirected.", image: "https://source.unsplash.com/500x700/?woman,determination&sig=15" },
+      { text: "Look how far you’ve come. There was a time you prayed for what you have now. Celebrate your progress.", image: "https://source.unsplash.com/500x700/?woman,success&sig=16" },
+      { text: "Doors are opening and opportunities are aligning. Stay ready so you don’t have to get ready.", image: "https://source.unsplash.com/500x700/?woman,opportunity&sig=17" },
+      { text: "When fear creeps in, remind yourself: I've survived harder days. I've conquered bigger fears. I've got this.", image: "https://source.unsplash.com/500x700/?woman,fearless&sig=18" },
+      { text: "Invest in yourself. Read that book, take that course. The best investment is in your growth.", image: "https://source.unsplash.com/500x700/?woman,learning&sig=19" },
+      { text: "Sometimes the biggest flex is choosing peace over chaos, growth over comfort, and purpose over popularity.", image: "https://source.unsplash.com/500x700/?woman,peace&sig=20" },
+      { text: "Dear DIYA Woman, the bag you’re securing isn’t just about money—it’s about freedom, impact, and legacy. Keep pushing.", image: "https://source.unsplash.com/500x700/?woman,legacy&sig=21" },
+      { text: "Don’t wait for the perfect moment; create it. Perfection is a myth—progress is what counts.", image: "https://source.unsplash.com/500x700/?woman,creation&sig=22" },
+      { text: "Your voice and story matter. Don’t shrink yourself to fit into spaces that can’t hold your greatness.", image: "https://source.unsplash.com/500x700/?woman,voice&sig=23" },
+      { text: "Rest if you must, but never quit. There’s a version of you on the other side of this grind that will thank you.", image: "https://source.unsplash.com/500x700/?woman,resilience&sig=24" },
+      { text: "Not every day will feel productive—and that’s okay. Your worth isn’t measured by output.", image: "https://source.unsplash.com/500x700/?woman,calm&sig=25" },
+      { text: "Sis, be proud of your quiet evolution. Your growth is undeniable, even if others don’t see it.", image: "https://source.unsplash.com/500x700/?woman,progress&sig=26" },
+      { text: "Protect your energy. Not everyone deserves access to you. Prioritize peace over people-pleasing.", image: "https://source.unsplash.com/500x700/?woman,energy&sig=27" },
+      { text: "You don’t have to have it all figured out. Keep taking one step at a time. Every small step is progress.", image: "https://source.unsplash.com/500x700/?woman,steps&sig=28" },
+      { text: "Celebrate both her wins and yours. Queens uplift queens—there’s no room for jealousy here.", image: "https://source.unsplash.com/500x700/?woman,celebrate&sig=29" },
+      { text: "Be so committed to your growth that you’re willing to be uncomfortable. Transformation happens outside comfort zones.", image: "https://source.unsplash.com/500x700/?woman,transformation&sig=30" },
+      { text: "Every setback is a setup for a stronger comeback. This isn’t your end; it’s just the beginning.", image: "https://source.unsplash.com/500x700/?woman,comeback&sig=31" },
+      { text: "Take up space, speak up, and shine bright. The world needs your voice.", image: "https://source.unsplash.com/500x700/?woman,shine&sig=32" },
+      { text: "Dream bigger. Then double it. You are capable of more than you’ve ever been told.", image: "https://source.unsplash.com/500x700/?woman,dream&sig=33" },
+      { text: "Healing, growth, and success are messy and non-linear. Give yourself grace along the journey.", image: "https://source.unsplash.com/500x700/?woman,healing&sig=34" },
+      { text: "Dear DIYA Woman, you’ve carried heavy burdens and still managed to bloom. That’s strength and resilience.", image: "https://source.unsplash.com/500x700/?woman,resilient&sig=35" },
+      { text: "Imagine how proud your younger self would be seeing you now. Don’t lose sight of your journey.", image: "https://source.unsplash.com/500x700/?woman,proud&sig=36" },
+      { text: "Your pace is perfect. Stop rushing and doubting. What’s meant for you is on its way.", image: "https://source.unsplash.com/500x700/?woman,calm&sig=37" },
+      { text: "Stay humble but know your worth. There’s nothing wrong with being proud of your hard work.", image: "https://source.unsplash.com/500x700/?woman,proud&sig=38" },
+      { text: "Some may not understand your journey—and that’s okay. It’s your vision, not theirs. Keep building.", image: "https://source.unsplash.com/500x700/?woman,vision&sig=39" },
+      { text: "You are the bag. Secure yourself first, then go get everything you deserve. Queens never settle.", image: "https://source.unsplash.com/500x700/?woman,empowerment&sig=40" }
+    ];
+    
+    function generateQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quote').innerText = quotes[randomIndex].text;
+      document.getElementById('bgImage').style.backgroundImage = `url('${quotes[randomIndex].image}')`;
+    }
+    window.onload = generateQuote;
+  </script>
+</body>
+</html>

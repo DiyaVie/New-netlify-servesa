@@ -1,162 +1,162 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIYA Vie Motivational Quotes</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-const quotes = [
-  "Dear DIYA Woman, you didn’t come this far to stop now. Your goals are still valid. Your dreams still matter. Keep showing up even when no one’s clapping yet.",
-  "Some days will test you. Things might not go as planned. Breathe, regroup, and remember: you’ve overcome so much already.",
-  "Repeat after me: I am capable. I am worthy. I am becoming. Speak life over yourself; your words carry power.",
-  "Comparison steals joy. Your journey is yours alone. Celebrate wins without questioning yours. There’s room for all to shine.",
-  "Dear DIYA Woman, it’s okay to rest. Hustling non-stop doesn’t prove anything. Protect your peace and recharge.",
-  "Shatter those ceilings, sis. Walk into every room like you belong because you do. Don’t dim your light.",
-  "That idea you’ve been sitting on? Start. That application you’re hesitating on? Submit it. Speak up and go after it.",
-  "Celebrate the silent wins: getting out of bed when you didn’t want to, sending that email, choosing yourself. Small steps matter.",
-  "Dear DIYA Woman, surround yourself with those who remind you of your power. Find your tribe that pushes you to dream bigger.",
-  "Your future self is watching, grateful you didn’t give up. Keep believing, keep blooming, keep securing the bag. You are magic.",
-  "Growth isn’t always loud. Sometimes it’s choosing peace over proving a point. Choose what serves your future.",
-  "You are not behind; you are on your own timeline. What’s meant for you won’t miss you—keep moving forward.",
-  "Sis, you are allowed to outgrow people, places, and mindsets that don’t align with who you’re becoming. Elevate unapologetically.",
-  "Let today be the day you choose courage over comfort. Big dreams require bold moves. Bet on yourself.",
-  "Every 'no' brings you closer to the right 'yes.' Don’t let rejection hold you back. You’re being redirected.",
-  "Look how far you’ve come. There was a time you prayed for what you have now. Celebrate your progress.",
-  "Doors are opening and opportunities are aligning. Stay ready so you don’t have to get ready.",
-  "When fear creeps in, remind yourself: I've survived harder days. I've conquered bigger fears. I've got this.",
-  "Invest in yourself. Read that book, take that course. The best investment is in your growth.",
-  "Sometimes the biggest flex is choosing peace over chaos, growth over comfort, and purpose over popularity.",
-  "Dear DIYA Woman, the bag you’re securing isn’t just about money—it’s about freedom, impact, and legacy. Keep pushing.",
-  "Don’t wait for the perfect moment; create it. Perfection is a myth—progress is what counts.",
-  "Your voice and story matter. Don’t shrink yourself to fit into spaces that can’t hold your greatness.",
-  "Rest if you must, but never quit. There’s a version of you on the other side of this grind that will thank you.",
-  "Not every day will feel productive—and that’s okay. Your worth isn’t measured by output.",
-  "Sis, be proud of your quiet evolution. Your growth is undeniable, even if others don’t see it.",
-  "Protect your energy. Not everyone deserves access to you. Prioritize peace over people-pleasing.",
-  "You don’t have to have it all figured out. Keep taking one step at a time. Every small step is progress.",
-  "Celebrate both her wins and yours. Queens uplift queens—there’s no room for jealousy here.",
-  "Be so committed to your growth that you’re willing to be uncomfortable. Transformation happens outside comfort zones.",
-  "Every setback is a setup for a stronger comeback. This isn’t your end; it’s just the beginning.",
-  "Take up space, speak up, and shine bright. The world needs your voice.",
-  "Dream bigger. Then double it. You are capable of more than you’ve ever been told.",
-  "Healing, growth, and success are messy and non-linear. Give yourself grace along the journey.",
-  "Dear DIYA Woman, you’ve carried heavy burdens and still managed to bloom. That’s strength and resilience.",
-  "Imagine how proud your younger self would be seeing you now. Don’t lose sight of your journey.",
-  "Your pace is perfect. Stop rushing and doubting. What’s meant for you is on its way.",
-  "Stay humble but know your worth. There’s nothing wrong with being proud of your hard work.",
-  "Some may not understand your journey—and that’s okay. It’s your vision, not theirs. Keep building.",
-  "You are the bag. Secure yourself first, then go get everything you deserve. Queens never settle.",
-  "Your dreams are valid even if they seem too big for others to comprehend. Keep going.",
-  "Don’t let the fear of starting small stop you. Every giant leap began with a single step.",
-  "Sometimes resting is the most productive thing you can do. Recharge and come back stronger.",
-  "Believe in the power of showing up for yourself daily. Consistency builds empires.",
-  "Dear DIYA Woman, the world benefits when you fully step into your power. Don’t hold back.",
-  "Your current situation is not your final destination. Keep pushing forward.",
-  "Don’t just chase the bag—build the table where you can invite others to thrive with you.",
-  "Even on your worst days, you are worthy and enough. Speak kindness over yourself.",
-  "Your energy is currency. Invest it in people, places, and projects that pay you peace.",
-  "Every season serves a purpose—even the quiet ones. Trust the process.",
-  "Dear DIYA Woman, your light is too bright to be dimmed by doubt. Keep shining.",
-  "You didn’t come this far to only come this far. The best is yet to come.",
-  "Opportunities multiply when you stay ready. Keep sharpening your skills.",
-  "Be the woman who decided to go for it regardless of the odds. Courage looks good on you.",
-  "Rejection is redirection. What’s meant for you will never require you to beg.",
-  "Grind, rest, repeat—but never quit. Your consistency is cultivating something powerful.",
-  "Dear DIYA Woman, remember: you are the dream and the dreamer. Walk boldly in that truth.",
-  "Every delay is not a denial. Trust the timing of your journey.",
-  "Take moments to celebrate how far you’ve come. Progress deserves applause.",
-  "Your life is unfolding as it should. Breathe, trust, and keep moving forward.",
-];
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      transition: background 1s ease;
+    }
 
-const gradients = [
-  "from-pink-500 to-yellow-500",
-  "from-purple-500 to-blue-500",
-  "from-green-400 to-teal-500",
-  "from-red-400 to-pink-500",
-  "from-blue-400 to-indigo-500",
-  "from-yellow-500 to-orange-500",
-  "from-teal-400 to-green-500",
-  "from-indigo-400 to-purple-500",
-  "from-orange-400 to-red-500",
-  "from-pink-400 to-purple-500",
-  "from-purple-300 to-indigo-400",
-  "from-blue-300 to-cyan-400",
-  "from-green-300 to-emerald-400",
-  "from-red-300 to-rose-400",
-  "from-yellow-300 to-amber-400",
-  "from-teal-300 to-cyan-400",
-  "from-indigo-300 to-violet-400",
-  "from-orange-300 to-amber-400",
-  "from-rose-300 to-pink-400",
-  "from-emerald-300 to-lime-400",
-  "from-cyan-300 to-blue-400",
-  "from-amber-300 to-orange-400",
-  "from-lime-300 to-green-400",
-  "from-violet-300 to-purple-400",
-  "from-rose-400 to-red-500",
-  "from-teal-500 to-green-600",
-  "from-indigo-500 to-blue-600",
-  "from-orange-500 to-yellow-600",
-  "from-pink-500 to-rose-600",
-  "from-emerald-500 to-teal-600",
-  "from-purple-500 to-violet-600",
-  "from-yellow-400 to-orange-500",
-  "from-blue-400 to-indigo-500",
-  "from-teal-400 to-cyan-500",
-  "from-red-400 to-rose-500",
-  "from-amber-400 to-orange-500",
-  "from-lime-400 to-green-500",
-  "from-violet-400 to-purple-500",
-  "from-cyan-400 to-blue-500",
-  "from-rose-500 to-pink-600",
-  "from-emerald-400 to-teal-500",
-  "from-indigo-400 to-blue-500",
-  "from-orange-400 to-yellow-500",
-  "from-pink-400 to-rose-500",
-  "from-purple-400 to-violet-500",
-  "from-yellow-300 to-amber-400",
-  "from-teal-300 to-green-400",
-  "from-blue-300 to-indigo-400",
-  "from-red-300 to-rose-400",
-  "from-lime-300 to-emerald-400",
-  "from-violet-300 to-purple-400",
-  "from-cyan-300 to-blue-400",
-  "from-amber-300 to-orange-400",
-  "from-pink-300 to-rose-400",
-  "from-emerald-300 to-teal-400",
-  "from-indigo-300 to-blue-400",
-  "from-orange-300 to-yellow-400",
-  "from-teal-300 to-cyan-400",
-  "from-violet-300 to-indigo-400",
-];
+    #quote-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 600px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
 
-export default function MotivationalQuotes() {
-  const [index, setIndex] = useState(0);
+    #quote {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      color: #333;
+    }
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % quotes.length);
-    }, 8000);
-    return () => clearInterval(timer);
-  }, []);
+    #refresh-btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-  const refreshQuote = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % quotes.length);
-  };
+    #refresh-btn:hover {
+      background-color: #555;
+    }
 
-  return (
-    <div className={`min-h-screen flex flex-col items-center justify-center text-center text-white bg-gradient-to-br ${gradients[index % gradients.length]} transition-all duration-1000 ease-in-out p-4`}>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.8 }}
-          className="bg-white text-gray-800 p-6 rounded-2xl shadow-2xl max-w-2xl"
-        >
-          <p className="text-lg md:text-2xl font-semibold">{quotes[index]}</p>
-        </motion.div>
-      </AnimatePresence>
-      <Button onClick={refreshQuote} className="mt-6 bg-black text-white px-6 py-2 rounded-full shadow-md hover:bg-gray-800 transition">Refresh Motivation</Button>
-      <p className="mt-4 text-sm text-gray-200 font-medium">Powered by DIYAVie</p>
-    </div>
-  );
-}
+    #powered {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="quote-container">
+    <div id="quote">Loading motivation...</div>
+    <button id="refresh-btn">Refresh Motivation</button>
+    <div id="powered">Powered by DIYAVie</div>
+  </div>
+
+  <script>
+    const quotes = [
+      "Dear DIYA Woman, you didn’t come this far to stop now. Your goals are still valid. Your dreams still matter. Keep showing up even when no one’s clapping yet.",
+      "Some days will test you. Things might not go as planned. Breathe, regroup, and remember: you’ve overcome so much already.",
+      "Repeat after me: I am capable. I am worthy. I am becoming. Speak life over yourself; your words carry power.",
+      "Comparison steals joy. Your journey is yours alone. Celebrate wins without questioning yours. There’s room for all to shine.",
+      "Dear DIYA Woman, it’s okay to rest. Hustling non-stop doesn’t prove anything. Protect your peace and recharge.",
+      "Shatter those ceilings, sis. Walk into every room like you belong because you do. Don’t dim your light.",
+      "That idea you’ve been sitting on? Start. That application you’re hesitating on? Submit it. Speak up and go after it.",
+      "Celebrate the silent wins: getting out of bed when you didn’t want to, sending that email, choosing yourself. Small steps matter.",
+      "Dear DIYA Woman, surround yourself with those who remind you of your power. Find your tribe that pushes you to dream bigger.",
+      "Your future self is watching, grateful you didn’t give up. Keep believing, keep blooming, keep securing the bag. You are magic.",
+      "Growth isn’t always loud. Sometimes it’s choosing peace over proving a point. Choose what serves your future.",
+      "You are not behind; you are on your own timeline. What’s meant for you won’t miss you—keep moving forward.",
+      "Sis, you are allowed to outgrow people, places, and mindsets that don’t align with who you’re becoming. Elevate unapologetically.",
+      "Let today be the day you choose courage over comfort. Big dreams require bold moves. Bet on yourself.",
+      "Every 'no' brings you closer to the right 'yes.' Don’t let rejection hold you back. You’re being redirected.",
+      "Look how far you’ve come. There was a time you prayed for what you have now. Celebrate your progress.",
+      "Doors are opening and opportunities are aligning. Stay ready so you don’t have to get ready.",
+      "When fear creeps in, remind yourself: I've survived harder days. I've conquered bigger fears. I've got this.",
+      "Invest in yourself. Read that book, take that course. The best investment is in your growth.",
+      "Sometimes the biggest flex is choosing peace over chaos, growth over comfort, and purpose over popularity.",
+      "Dear DIYA Woman, the bag you’re securing isn’t just about money—it’s about freedom, impact, and legacy. Keep pushing.",
+      "Don’t wait for the perfect moment; create it. Perfection is a myth—progress is what counts.",
+      "Your voice and story matter. Don’t shrink yourself to fit into spaces that can’t hold your greatness.",
+      "Rest if you must, but never quit. There’s a version of you on the other side of this grind that will thank you.",
+      "Not every day will feel productive—and that’s okay. Your worth isn’t measured by output.",
+      "Sis, be proud of your quiet evolution. Your growth is undeniable, even if others don’t see it.",
+      "Protect your energy. Not everyone deserves access to you. Prioritize peace over people-pleasing.",
+      "You don’t have to have it all figured out. Keep taking one step at a time. Every small step is progress.",
+      "Celebrate both her wins and yours. Queens uplift queens—there’s no room for jealousy here.",
+      "Be so committed to your growth that you’re willing to be uncomfortable. Transformation happens outside comfort zones.",
+      "Every setback is a setup for a stronger comeback. This isn’t your end; it’s just the beginning.",
+      "Take up space, speak up, and shine bright. The world needs your voice.",
+      "Dream bigger. Then double it. You are capable of more than you’ve ever been told.",
+      "Healing, growth, and success are messy and non-linear. Give yourself grace along the journey.",
+      "Dear DIYA Woman, you’ve carried heavy burdens and still managed to bloom. That’s strength and resilience.",
+      "Imagine how proud your younger self would be seeing you now. Don’t lose sight of your journey.",
+      "Your pace is perfect. Stop rushing and doubting. What’s meant for you is on its way.",
+      "Stay humble but know your worth. There’s nothing wrong with being proud of your hard work.",
+      "Some may not understand your journey—and that’s okay. It’s your vision, not theirs. Keep building.",
+      "You are the bag. Secure yourself first, then go get everything you deserve. Queens never settle.",
+      "Persistence beats talent when talent doesn’t work hard. Stay consistent.",
+      "Your dreams are valid. Don’t let fear talk you out of them.",
+      "Let go of what’s weighing you down. Make space for what lifts you up.",
+      "Courage isn’t the absence of fear; it’s moving forward despite it.",
+      "Don’t water down your magic for those who can’t handle you at full strength.",
+      "You’ve got this. Not because it’s easy, but because you’re capable.",
+      "Radiate positivity and watch how your world transforms.",
+      "Your resilience is unmatched. Own it.",
+      "You are worthy of every good thing coming your way.",
+      "Mistakes are proof you’re trying. Keep going.",
+      "You didn’t wake up to be mediocre. Shine unapologetically.",
+      "Grind in silence, let your success make the noise.",
+      "Your consistency will pay off. Trust the process.",
+      "Doubt kills more dreams than failure ever will. Believe in yourself.",
+      "Stay focused. Distractions will fade; your dreams won’t.",
+      "Your energy introduces you before you speak. Make it powerful.",
+      "Progress, not perfection. Keep moving.",
+      "You are a masterpiece and a work in progress simultaneously.",
+      "Trust the timing of your life. It’s unfolding perfectly.",
+      "Surround yourself with those who see your light and help you shine brighter."
+    ];
+
+    const gradients = [
+      "linear-gradient(135deg, #ff9a9e, #fad0c4)",
+      "linear-gradient(135deg, #a18cd1, #fbc2eb)",
+      "linear-gradient(135deg, #fbc2eb, #a6c1ee)",
+      "linear-gradient(135deg, #f6d365, #fda085)",
+      "linear-gradient(135deg, #84fab0, #8fd3f4)",
+      "linear-gradient(135deg, #cfd9df, #e2ebf0)",
+      "linear-gradient(135deg, #ffdde1, #ee9ca7)",
+      "linear-gradient(135deg, #a1c4fd, #c2e9fb)",
+      "linear-gradient(135deg, #fccb90, #d57eeb)",
+      "linear-gradient(135deg, #e0c3fc, #8ec5fc)"
+    ];
+
+    const quoteEl = document.getElementById("quote");
+    const refreshBtn = document.getElementById("refresh-btn");
+
+    function showRandomQuote() {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+
+      document.body.style.background = randomGradient;
+      quoteEl.textContent = randomQuote;
+    }
+
+    refreshBtn.addEventListener("click", showRandomQuote);
+    window.onload = showRandomQuote;
+  </script>
+</body>
+  </html>
+  
